@@ -1,0 +1,349 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --background: #f4f0eb;
+  --foreground: #333333;
+  --retro-border: #333333;
+  --retro-green: #4ade80;
+}
+
+html {
+  font-size: 18px;
+  /* Increases all text and spacing proportionally */
+}
+
+body {
+  color: var(--foreground);
+  background-color: var(--background);
+  background-image:
+    url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)' opacity='0.05'/%3E%3C/svg%3E"),
+    linear-gradient(90deg, transparent 0 12%, rgba(74, 222, 128, 0.18) 12% 14%, transparent 14% 100%),
+    linear-gradient(0deg, transparent 0 20%, rgba(74, 222, 128, 0.15) 20% 22%, transparent 22% 100%),
+    linear-gradient(90deg, transparent 0 62%, rgba(96, 165, 250, 0.16) 62% 64%, transparent 64% 100%),
+    linear-gradient(0deg, transparent 0 72%, rgba(96, 165, 250, 0.12) 72% 74%, transparent 74% 100%),
+    radial-gradient(circle, rgba(74, 222, 128, 0.32) 0 4px, transparent 5px),
+    radial-gradient(circle, rgba(96, 165, 250, 0.26) 0 4px, transparent 5px),
+    radial-gradient(circle, rgba(254, 240, 138, 0.26) 0 3px, transparent 4px);
+  background-size:
+    200px 200px,
+    180px 132px,
+    220px 164px,
+    260px 180px,
+    196px 148px,
+    180px 132px,
+    260px 180px,
+    220px 164px;
+  background-position:
+    0 0,
+    0 0,
+    56px 28px,
+    18px 84px,
+    96px 12px,
+    30px 34px,
+    132px 78px,
+    182px 46px;
+  background-attachment: fixed;
+  animation: circuit-background-scroll 18s steps(18) infinite;
+}
+
+@media (hover: hover) and (pointer: fine) and (prefers-reduced-motion: no-preference) {
+
+  html,
+  body,
+  a,
+  button,
+  input,
+  textarea,
+  select,
+  [role="button"],
+  [tabindex]:not([tabindex="-1"]) {
+    cursor: none;
+  }
+}
+
+@keyframes circuit-background-scroll {
+  to {
+    background-position:
+      0 0,
+      180px 132px,
+      276px 192px,
+      278px 264px,
+      292px 160px,
+      210px 166px,
+      392px 258px,
+      402px 210px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  body {
+    animation: none;
+  }
+}
+
+@layer utilities {
+  .pixel-border {
+    @apply border-[3px] border-retro-border;
+  }
+}
+
+/* Custom scrollbar for retro feel */
+::-webkit-scrollbar {
+  width: 12px;
+  height: 12px;
+}
+
+::-webkit-scrollbar-track {
+  background: #f4f0eb;
+  border-left: 3px solid #333333;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #333333;
+  border: 3px solid #f4f0eb;
+}
+
+/* CRT Chromatic Aberration Text Glitch animations */
+@keyframes glitch-anim-1 {
+  0% {
+    clip-path: inset(96% 0 1% 0);
+  }
+
+  5% {
+    clip-path: inset(18% 0 68% 0);
+  }
+
+  10% {
+    clip-path: inset(57% 0 11% 0);
+  }
+
+  15% {
+    clip-path: inset(80% 0 5% 0);
+  }
+
+  20% {
+    clip-path: inset(41% 0 22% 0);
+  }
+
+  25% {
+    clip-path: inset(73% 0 25% 0);
+  }
+
+  30% {
+    clip-path: inset(6% 0 85% 0);
+  }
+
+  35% {
+    clip-path: inset(53% 0 35% 0);
+  }
+
+  40% {
+    clip-path: inset(84% 0 2% 0);
+  }
+
+  45% {
+    clip-path: inset(13% 0 46% 0);
+  }
+
+  50% {
+    clip-path: inset(72% 0 22% 0);
+  }
+
+  55% {
+    clip-path: inset(97% 0 2% 0);
+  }
+
+  60% {
+    clip-path: inset(34% 0 62% 0);
+  }
+
+  65% {
+    clip-path: inset(82% 0 4% 0);
+  }
+
+  70% {
+    clip-path: inset(18% 0 78% 0);
+  }
+
+  75% {
+    clip-path: inset(59% 0 28% 0);
+  }
+
+  80% {
+    clip-path: inset(7% 0 81% 0);
+  }
+
+  85% {
+    clip-path: inset(91% 0 7% 0);
+  }
+
+  90% {
+    clip-path: inset(23% 0 54% 0);
+  }
+
+  95% {
+    clip-path: inset(67% 0 19% 0);
+  }
+
+  100% {
+    clip-path: inset(98% 0 1% 0);
+  }
+}
+
+@keyframes glitch-anim-2 {
+  0% {
+    clip-path: inset(12% 0 85% 0);
+  }
+
+  5% {
+    clip-path: inset(72% 0 15% 0);
+  }
+
+  10% {
+    clip-path: inset(32% 0 50% 0);
+  }
+
+  15% {
+    clip-path: inset(94% 0 2% 0);
+  }
+
+  20% {
+    clip-path: inset(15% 0 81% 0);
+  }
+
+  25% {
+    clip-path: inset(58% 0 38% 0);
+  }
+
+  30% {
+    clip-path: inset(82% 0 12% 0);
+  }
+
+  35% {
+    clip-path: inset(3% 0 94% 0);
+  }
+
+  40% {
+    clip-path: inset(45% 0 45% 0);
+  }
+
+  45% {
+    clip-path: inset(88% 0 1% 0);
+  }
+
+  50% {
+    clip-path: inset(21% 0 71% 0);
+  }
+
+  55% {
+    clip-path: inset(64% 0 31% 0);
+  }
+
+  60% {
+    clip-path: inset(91% 0 5% 0);
+  }
+
+  65% {
+    clip-path: inset(18% 0 77% 0);
+  }
+
+  70% {
+    clip-path: inset(49% 0 43% 0);
+  }
+
+  75% {
+    clip-path: inset(78% 0 18% 0);
+  }
+
+  80% {
+    clip-path: inset(2% 0 95% 0);
+  }
+
+  85% {
+    clip-path: inset(55% 0 41% 0);
+  }
+
+  90% {
+    clip-path: inset(89% 0 2% 0);
+  }
+
+  95% {
+    clip-path: inset(31% 0 62% 0);
+  }
+
+  100% {
+    clip-path: inset(74% 0 21% 0);
+  }
+}
+
+@keyframes glitch-skew {
+
+  0%,
+  100% {
+    transform: skew(0deg) translate(0);
+  }
+
+  10% {
+    transform: skew(1deg) translate(-1px, 1px);
+  }
+
+  20% {
+    transform: skew(-1deg) translate(1px, -1px);
+  }
+
+  30% {
+    transform: skew(0deg) translate(0);
+  }
+
+  40% {
+    transform: skew(-1.5deg) translate(-1px, -1px);
+  }
+
+  50% {
+    transform: skew(2deg) translate(1px, 1px);
+  }
+
+  60% {
+    transform: skew(0.5deg) translate(0);
+  }
+
+  70% {
+    transform: skew(-2deg) translate(-1px, 1px);
+  }
+
+  80% {
+    transform: skew(0deg) translate(0);
+  }
+
+  90% {
+    transform: skew(1deg) translate(1px, -1px);
+  }
+}
+
+@keyframes crt-flicker {
+  0% {
+    opacity: 0.96;
+  }
+
+  50% {
+    opacity: 1;
+  }
+
+  100% {
+    opacity: 0.97;
+  }
+}
+
+.animate-glitch-1 {
+  animation: glitch-anim-1 2s infinite linear alternate-reverse, glitch-skew 1s infinite linear alternate-reverse;
+}
+
+.animate-glitch-2 {
+  animation: glitch-anim-2 2s infinite linear alternate-reverse, glitch-skew 1.5s infinite linear alternate-reverse;
+}
+
+.animate-crt-flicker {
+  animation: crt-flicker 0.15s infinite;
+}
