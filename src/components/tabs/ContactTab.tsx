@@ -62,7 +62,7 @@ export default function ContactTab() {
       });
 
       if (!response.ok) {
-        throw new Error(await response.text());
+        throw new Error(`${response.status}: ${await response.text()}`);
       }
 
       setEmail("");
@@ -70,9 +70,11 @@ export default function ContactTab() {
       setMessage("");
       setStatus("success");
       setStatusText("Transmission complete. Message delivered successfully.");
-    } catch {
+    } catch (error) {
+      const detail = error instanceof Error ? error.message : "unknown error";
+      console.error("EmailJS send failed:", detail);
       setStatus("error");
-      setStatusText("Transmission failed. Check EmailJS settings and try again.");
+      setStatusText(`Transmission failed: ${detail}`);
     }
   }
 
